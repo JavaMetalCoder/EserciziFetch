@@ -37,8 +37,14 @@ getPikachu();
 //Scrivi una funzione async che prende come parametro il nome di un Pokémon e stampa il suo peso.
 
 async function getWeight(pokemon) {
-const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+  try {
+   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
 
-const data = await response.json();
-console.log(data.weight);
+   if(!response.ok) throw new Error("Pokemon non trovato");
+
+  const data = await response.json();
+  console.log(`${pokemon} pesa ${data.weight}`);
+  } catch (error) {
+    console.log(error.message);
+  }
 }
