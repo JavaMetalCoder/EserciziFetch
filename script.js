@@ -48,3 +48,24 @@ async function getWeight(pokemon) {
     console.log(error.message);
   }
 }
+
+const text = document.getElementById("nome").value;
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", getData);
+
+async function getData() {
+  try {
+  const response = await fetch('https://jsonplaceholder.typecode.com/posts/1');
+
+  if(!response.ok) throw new Error("Errore");
+
+  const data = await response.json;
+  
+  } catch (err) {
+    console.log("Errore: " + err.message);
+  }
+
+
+}
+
