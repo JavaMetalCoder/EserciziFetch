@@ -26,6 +26,30 @@ async function getData() {
 
 
 }
+async function postData() {
+  const dati = {
+    nome: "Fabio",
+    messaggio: "Ciaoooo"
+  }
+  try {
+    const risposta = await fetch('https://jsonplaceholder.typicode.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify(dati)
+
+    });
+
+    if(!risposta.ok) throw new Error("Errore");
+
+    const risultato = await risposta.json();
+    console.log('Risposta server:', risultato);
+
+  } catch (err) {
+    console.error("Errore: ", err.message)
+  }
+
 
 
 });
